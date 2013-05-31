@@ -1,5 +1,6 @@
 package com.graphLeap.twitter;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -20,13 +21,14 @@ import android.widget.TextView;
 import com.graphLeap.R;
 import com.graphLeap.twitter.TwitterApp.TwDialogListener;
 
+@SuppressLint("SetJavaScriptEnabled")
 public class TwitterDialog extends Dialog {
 
     static final float[] DIMENSIONS_LANDSCAPE = { 460, 260 };
     static final float[] DIMENSIONS_PORTRAIT = { 280, 420 };
     static final FrameLayout.LayoutParams FILL = new FrameLayout.LayoutParams(
-            ViewGroup.LayoutParams.FILL_PARENT,
-            ViewGroup.LayoutParams.FILL_PARENT);
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT);
     static final int MARGIN = 4;
     static final int PADDING = 2;
     private String mUrl;
@@ -61,19 +63,16 @@ public class TwitterDialog extends Dialog {
 
         Display display = getWindow().getWindowManager().getDefaultDisplay();
         final float scale = getContext().getResources().getDisplayMetrics().density;
-        float[] dimensions = (display.getWidth() < display.getHeight()) ? DIMENSIONS_PORTRAIT
-                : DIMENSIONS_LANDSCAPE;
+        float[] dimensions = (display.getWidth() < display.getHeight()) ? DIMENSIONS_PORTRAIT : DIMENSIONS_LANDSCAPE;
 
         addContentView(mContent, new FrameLayout.LayoutParams(
-                (int) (dimensions[0] * scale + 0.5f), (int) (dimensions[1]
-                        * scale + 0.5f)));
+                (int) (dimensions[0] * scale + 0.5f), (int) (dimensions[1] * scale + 0.5f)));
     }
 
     private void setUpTitle() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        Drawable icon = getContext().getResources().getDrawable(
-                R.drawable.ic_launcher);
+        Drawable icon = getContext().getResources().getDrawable(R.drawable.ic_launcher);
 
         mTitle = new TextView(getContext());
 

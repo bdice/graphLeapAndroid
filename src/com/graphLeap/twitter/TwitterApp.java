@@ -120,14 +120,12 @@ public class TwitterApp {
 				int what = 1;
 
 				try {
-					authUrl = mHttpOauthprovider.retrieveRequestToken(
-							mHttpOauthConsumer, CALLBACK_URL);
+					authUrl = mHttpOauthprovider.retrieveRequestToken(mHttpOauthConsumer, CALLBACK_URL);
 					what = 0;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				mHandler.sendMessage(mHandler
-						.obtainMessage(what, 1, 0, authUrl));
+				mHandler.sendMessage(mHandler.obtainMessage(what, 1, 0, authUrl));
 			}
 		}.start();
 	}
