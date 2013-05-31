@@ -49,18 +49,22 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	public void onClick(View v) {
 		mTwitter.setListener(mTwLoginDialogListener);
-		mTwitter.resetAccessToken();
+		//mTwitter.resetAccessToken();
 		if (mTwitter.hasAccessToken() == true) {
 			try {
+				mTwitter.verifyCredentials();
 				parseTimeline();
 				postAsToast(FROM.TWITTER_POST, MESSAGE.SUCCESS);
 			} catch (Exception e) {
+				//Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
 				if (e.getMessage().toString().contains("duplicate")) {
 					postAsToast(FROM.TWITTER_POST, MESSAGE.DUPLICATE);
 				}
 				e.printStackTrace();
+				mTwitter.resetAccessToken();
+				mTwitter.authorize();
 			}
-			mTwitter.resetAccessToken();
+			//mTwitter.resetAccessToken();
 		} else {
 			mTwitter.authorize();
 		}
@@ -106,6 +110,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		public void onComplete(String value) {
 			try {
+				mTwitter.verifyCredentials();
 				parseTimeline();
 				postAsToast(FROM.TWITTER_POST, MESSAGE.SUCCESS);
 			} catch (Exception e) {
@@ -113,8 +118,10 @@ public class MainActivity extends Activity implements OnClickListener {
 					postAsToast(FROM.TWITTER_POST, MESSAGE.DUPLICATE);
 				}
 				e.printStackTrace();
+				mTwitter.resetAccessToken();
+				mTwitter.authorize();
 			}
-			mTwitter.resetAccessToken();
+			//mTwitter.resetAccessToken();
 		}
 	};
 	

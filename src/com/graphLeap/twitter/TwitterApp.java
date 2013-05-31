@@ -54,8 +54,6 @@ public class TwitterApp {
 
 		mProgressDlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		
-
 		mHttpOauthConsumer = new CommonsHttpOAuthConsumer(mConsumerKey, mSecretKey);
 
 		String request_url = TWITTER_REQUEST_URL;
@@ -94,7 +92,7 @@ public class TwitterApp {
 		return mSession.getUsername();
 	}
 
-	public void updateStatus(String status) throws Exception {
+	public void updateStatus(String status) throws TwitterException {
 		try {
 			twitterAPI.updateStatus(status);
 		} catch (TwitterException e) {
@@ -102,9 +100,17 @@ public class TwitterApp {
 		}
 	}
 	
-	public ResponseList<Status> getHomeTimeline() throws Exception {
+	public ResponseList<Status> getHomeTimeline() throws TwitterException {
 		try {
 			return twitterAPI.getHomeTimeline();
+		} catch (TwitterException e) {
+			throw e;
+		}
+	}
+	
+	public User verifyCredentials() throws TwitterException {
+		try {
+			return twitterAPI.verifyCredentials();
 		} catch (TwitterException e) {
 			throw e;
 		}
