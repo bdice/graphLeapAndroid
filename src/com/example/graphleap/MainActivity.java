@@ -1,8 +1,10 @@
 package com.example.graphleap;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -21,6 +23,7 @@ public class MainActivity extends Activity {
     }
     
     public void readTimeline(View view){
-    	
+    	TextView theText = (TextView) findViewById(R.id.timelineText);
+    	theText.setText("asdf");
     }
 }
