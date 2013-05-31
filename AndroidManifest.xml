@@ -16,19 +16,12 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.graphLeap.TwitterActivity"
+            android:name="com.graphLeap.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-			    <action android:name="android.intent.action.VIEW"/>
-    			<category android:name="android.intent.category.DEFAULT"/>
-    			<category android:name="android.intent.category.BROWSABLE"/>
-    			<data android:scheme="x-graphleap-oauth-twitter" android:host="callback"/>
-			</intent-filter>
         </activity>
     </application>
 

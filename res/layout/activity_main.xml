@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/read_timeline_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -21,8 +21,8 @@
         android:id="@+id/timelineText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_below="@+id/button1"
-        android:text="@string/hello_world" />
+        android:layout_alignLeft="@+id/read_timeline_button"
+        android:layout_below="@+id/read_timeline_button"
+        android:text="@string/default_message_text" />
 
 </RelativeLayout>
