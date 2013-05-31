@@ -75,7 +75,7 @@ public class TwitterActivity extends Activity implements OnClickListener {
 			case FAILED:
 				Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show();
 			default:
-				break;
+				Toast.makeText(this, "Something Else 1.", Toast.LENGTH_LONG).show();
 			}
 			break;
 		case TWITTER_POST:
@@ -93,7 +93,7 @@ public class TwitterActivity extends Activity implements OnClickListener {
 						"Posting Failed because of duplicate message...",
 						Toast.LENGTH_LONG).show();
 			default:
-				break;
+				Toast.makeText(this, "Something Else 2.", Toast.LENGTH_LONG).show();
 			}
 			break;
 		}

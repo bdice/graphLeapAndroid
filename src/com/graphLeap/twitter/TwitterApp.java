@@ -30,19 +30,15 @@ public class TwitterApp {
 	private TwDialogListener mListener;
 	private Activity context;
 
-	public static final String OAUTH_CALLBACK_SCHEME = "x-oauthflow-twitter";
+	public static final String OAUTH_CALLBACK_SCHEME = "twitterapp";
 	public static final String OAUTH_CALLBACK_HOST = "callback";
 	public static final String CALLBACK_URL = OAUTH_CALLBACK_SCHEME + "://" + OAUTH_CALLBACK_HOST;
-	
-	// public static final String CALLBACK_URL =
-	// "http://abhinavasblog.blogspot.com/";
 	
 	static String base_link_url = "http://www.google.com/";
 	private static final String TWITTER_ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token";
 	private static final String TWITTER_AUTHORZE_URL = "https://api.twitter.com/oauth/authorize";
 	private static final String TWITTER_REQUEST_URL = "https://api.twitter.com/oauth/request_token";
-	public static final String MESSAGE = "Hello Everyone...."
-			+ "<a href= " + base_link_url + "</a>";
+	public static final String MESSAGE = "<strong>Way to go!</strong>";
 
 	public TwitterApp(Activity context, String consumerKey, String secretKey) {
 		this.context = context;
