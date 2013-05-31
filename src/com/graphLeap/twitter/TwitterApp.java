@@ -7,6 +7,8 @@ import java.net.URLDecoder;
 import oauth.signpost.OAuthProvider;
 import oauth.signpost.basic.DefaultOAuthProvider;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
+import twitter4j.ResponseList;
+import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -19,7 +21,7 @@ import android.os.Message;
 import android.view.Window;
 
 public class TwitterApp {
-	private Twitter mTwitter;
+	private Twitter twitterAPI;
 	private TwitterSession mSession;
 	private AccessToken mAccessToken;
 	private CommonsHttpOAuthConsumer mHttpOauthConsumer;
@@ -43,7 +45,7 @@ public class TwitterApp {
 	public TwitterApp(Activity context, String consumerKey, String secretKey) {
 		this.context = context;
 
-		mTwitter = new TwitterFactory().getInstance();
+		twitterAPI = new TwitterFactory().getInstance();
 		mSession = new TwitterSession(context);
 		mProgressDlg = new ProgressDialog(context);
 
@@ -70,8 +72,8 @@ public class TwitterApp {
 
 	private void configureToken() {
 		if (mAccessToken != null) {
-			mTwitter.setOAuthConsumer(mConsumerKey, mSecretKey);
-			mTwitter.setOAuthAccessToken(mAccessToken);
+			twitterAPI.setOAuthConsumer(mConsumerKey, mSecretKey);
+			twitterAPI.setOAuthAccessToken(mAccessToken);
 		}
 	}
 
@@ -93,25 +95,19 @@ public class TwitterApp {
 
 	public void updateStatus(String status) throws Exception {
 		try {
-			mTwitter.updateStatus(status);
-			// File f = new File("/mnt/sdcard/74.jpg");
-			// mTwitter.updateProfileImage(f);
+			twitterAPI.updateStatus(status);
 		} catch (TwitterException e) {
 			throw e;
 		}
 	}
-
-//	public void uploadPic(File file, String message)
-//			throws Exception {
-//		try {
-//			StatusUpdate status = new StatusUpdate(message);
-//			status.setMedia(file);
-//			mTwitter.updateStatus(status);
-//		} catch (TwitterException e) {
-//			Log.d("TAG", "Pic Upload error" + e.getExceptionCode());
-//			throw e;
-//		}
-//	}
+	
+	public ResponseList<Status> getHomeTimeline() throws Exception {
+		try {
+			return twitterAPI.getHomeTimeline();
+		} catch (TwitterException e) {
+			throw e;
+		}
+	}
 
 	public void authorize() {
 		mProgressDlg.setMessage("Initializing ...");
@@ -157,7 +153,7 @@ public class TwitterApp {
 
 					configureToken();
 
-					User user = mTwitter.verifyCredentials();
+					User user = twitterAPI.verifyCredentials();
 
 					mSession.storeAccessToken(mAccessToken, user.getName());
 
