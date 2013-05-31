@@ -17,12 +17,26 @@
         android:onClick="readTimeline"
         android:text="@string/button_read_timeline" />
 
-    <TextView
-        android:id="@+id/timelineText"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/read_timeline_button"
         android:layout_below="@+id/read_timeline_button"
-        android:text="@string/default_message_text" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/timelineText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/default_message_text" />
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
