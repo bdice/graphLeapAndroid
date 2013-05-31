@@ -5,7 +5,6 @@ import twitter4j.Status;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -53,9 +52,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		mTwitter.resetAccessToken();
 		if (mTwitter.hasAccessToken() == true) {
 			try {
-				theTimeline = mTwitter.getHomeTimeline();
-				messageFromTheCloud = makeMessage(theTimeline.get(0));
-				theText.setText(messageFromTheCloud);
+				parseTimeline();
 				postAsToast(FROM.TWITTER_POST, MESSAGE.SUCCESS);
 			} catch (Exception e) {
 				if (e.getMessage().toString().contains("duplicate")) {
@@ -109,10 +106,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		public void onComplete(String value) {
 			try {
-				//mTwitter.updateStatus(TwitterApp.MESSAGE);
-				theTimeline = mTwitter.getHomeTimeline();
-				messageFromTheCloud = makeMessage(theTimeline.get(0));
-				theText.setText(messageFromTheCloud);
+				parseTimeline();
 				postAsToast(FROM.TWITTER_POST, MESSAGE.SUCCESS);
 			} catch (Exception e) {
 				if (e.getMessage().toString().contains("duplicate")) {
@@ -130,5 +124,19 @@ public class MainActivity extends Activity implements OnClickListener {
 		message += "  ::  ";
 		message += theStatus.getText();
 		return message;
+	}
+	
+	private void parseTimeline(){
+		try {
+			theTimeline = mTwitter.getHomeTimeline();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		messageFromTheCloud = "";
+		for(int i = 0; i<theTimeline.size(); i++){
+			messageFromTheCloud += makeMessage(theTimeline.get(i));
+			messageFromTheCloud += "\n\n";
+		}
+		theText.setText(messageFromTheCloud);
 	}
 }
