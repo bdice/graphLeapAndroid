@@ -18,17 +18,21 @@ public class MainActivity extends Activity {
 	Twitter twitter;
 	ResponseList<Status> theTimeline;
 	ConfigurationBuilder cb;
-	
+	private static final String CONSUMER_KEY = "NLFSU46FJTOdm0y4OPyjQ"; 
+    private static final String CONSUMER_SECRET = "ce2JX36nhfZ7dexYXjelZg8IDhYR6E6NFHrCfIMY3qM";
+    private static final String ACCESS_TOKEN = "15201649-HOZbsNkpRwxrunW49ENcCy6mgQP9OQnC3vaSTv33S"; 
+    private static final String ACCESS_TOKEN_SECRET = "kZJMsYNyMHWOFBw9WqRURW1QHLZdSwKF9vtnMs4qvgk";
+    
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
-        .setOAuthConsumerKey("NLFSU46FJTOdm0y4OPyjQ")
-        .setOAuthConsumerSecret("ce2JX36nhfZ7dexYXjelZg8IDhYR6E6NFHrCfIMY3qM")
-        .setOAuthAccessToken("15201649-HOZbsNkpRwxrunW49ENcCy6mgQP9OQnC3vaSTv33S")
-        .setOAuthAccessTokenSecret("kZJMsYNyMHWOFBw9WqRURW1QHLZdSwKF9vtnMs4qvgk");
+        .setOAuthConsumerKey(CONSUMER_KEY)
+        .setOAuthConsumerSecret(CONSUMER_SECRET)
+        .setOAuthAccessToken(ACCESS_TOKEN)
+        .setOAuthAccessTokenSecret(ACCESS_TOKEN_SECRET);
         TwitterFactory tf = new TwitterFactory(cb.build());
         twitter = tf.getInstance();
     	try {

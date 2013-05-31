@@ -1,4 +1,4 @@
-package com.graphLeap.twitter;
+package com.graphLeap;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,20 +10,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.graphLeap.R;
+import com.graphLeap.twitter.TwitterApp;
 import com.graphLeap.twitter.TwitterApp.TwDialogListener;
 
 public class TwitterActivity extends Activity implements OnClickListener {
 	private TwitterApp mTwitter;
 	Button mBtnTwitter;
-	private static final String CONSUMER_KEY = "6JyIkj71ZqG4wk3YF0Y4hw";
-	private static final String CONSUMER_SECRET = "sJl9aRVqlEt7nxlKvpMVK6tLULz5FSQ2KUOW0yie4";
-
-	// For Sample_Demo_Application
-
-	// private static final String CONSUMER_KEY = "1ozjDiHOqJq4UkowfvZIA";
-	// private static final String CONSUMER_SECRET =
-	// "FPToH6HrOZa5TttS0dSGjgPsNIHYCgCJA5uki8Bi00";
+	private static final String CONSUMER_KEY = "NLFSU46FJTOdm0y4OPyjQ";
+	private static final String CONSUMER_SECRET = "ce2JX36nhfZ7dexYXjelZg8IDhYR6E6NFHrCfIMY3qM";
 
 	private enum FROM {
 		TWITTER_POST, TWITTER_LOGIN
