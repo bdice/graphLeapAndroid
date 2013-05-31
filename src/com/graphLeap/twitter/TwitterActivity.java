@@ -1,7 +1,5 @@
-package com.android.twitter;
+package com.graphLeap.twitter;
 
-import com.graphleap.twitter.TwitterApp;
-import com.graphleap.twitter.TwitterApp.TwDialogListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -11,6 +9,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.graphLeap.R;
+import com.graphLeap.twitter.TwitterApp.TwDialogListener;
 
 public class TwitterActivity extends Activity implements OnClickListener {
 	private TwitterApp mTwitter;
@@ -35,13 +36,12 @@ public class TwitterActivity extends Activity implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-				.permitAll().build();
+		setContentView(R.layout.activity_main);
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 
 		mTwitter = new TwitterApp(this, CONSUMER_KEY, CONSUMER_SECRET);
-		mBtnTwitter = (Button) findViewById(R.id.mBtnTwitter);
+		mBtnTwitter = (Button) findViewById(R.id.button1);
 		mBtnTwitter.setOnClickListener(this);
 	}
 

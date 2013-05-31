@@ -1,4 +1,4 @@
-package com.example.graphleap;
+package com.graphLeap;
 
 import twitter4j.ResponseList;
 import twitter4j.Status;

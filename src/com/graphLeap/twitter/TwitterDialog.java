@@ -1,4 +1,4 @@
-package com.twitter.android;
+package com.graphLeap.twitter;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -17,8 +17,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.twitter.R;
-import com.twitter.android.TwitterApp.TwDialogListener;
+import com.graphLeap.R;
+import com.graphLeap.twitter.TwitterApp.TwDialogListener;
 
 public class TwitterDialog extends Dialog {
 

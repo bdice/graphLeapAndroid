@@ -1,11 +1,9 @@
-package com.twitter.android;
+package com.graphLeap.twitter;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
-import oauth.signpost.OAuthProvider;
-import oauth.signpost.basic.DefaultOAuthProvider;
-import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
+
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;

@@ -1,4 +1,4 @@
-package com.twitter.android;
+package com.graphLeap.twitter;
 
 import twitter4j.auth.AccessToken;
 import android.content.SharedPreferences;
