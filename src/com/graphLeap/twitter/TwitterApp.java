@@ -32,14 +32,13 @@ public class TwitterApp {
 
 	public static final String OAUTH_CALLBACK_SCHEME = "x-oauthflow-twitter";
 	public static final String OAUTH_CALLBACK_HOST = "callback";
-	public static final String CALLBACK_URL = OAUTH_CALLBACK_SCHEME + "://"
-			+ OAUTH_CALLBACK_HOST;
+	public static final String CALLBACK_URL = OAUTH_CALLBACK_SCHEME + "://" + OAUTH_CALLBACK_HOST;
 	
 	// public static final String CALLBACK_URL =
 	// "http://abhinavasblog.blogspot.com/";
 	
-	static String base_link_url = "http://www.google.co.in/";
-	private static final String TWITTER_ACCESS_TOKEN_URL = "http://api.twitter.com/oauth/access_token";
+	static String base_link_url = "http://www.google.com/";
+	private static final String TWITTER_ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token";
 	private static final String TWITTER_AUTHORZE_URL = "https://api.twitter.com/oauth/authorize";
 	private static final String TWITTER_REQUEST_URL = "https://api.twitter.com/oauth/request_token";
 	public static final String MESSAGE = "Hello Everyone...."
@@ -57,15 +56,13 @@ public class TwitterApp {
 		mConsumerKey = consumerKey;
 		mSecretKey = secretKey;
 
-		mHttpOauthConsumer = new CommonsHttpOAuthConsumer(mConsumerKey,
-				mSecretKey);
+		mHttpOauthConsumer = new CommonsHttpOAuthConsumer(mConsumerKey, mSecretKey);
 
 		String request_url = TWITTER_REQUEST_URL;
 		String access_token_url = TWITTER_ACCESS_TOKEN_URL;
 		String authorize_url = TWITTER_AUTHORZE_URL;
 
-		mHttpOauthprovider = new DefaultOAuthProvider(request_url,
-				access_token_url, authorize_url);
+		mHttpOauthprovider = new DefaultOAuthProvider(request_url, access_token_url, authorize_url);
 		mAccessToken = mSession.getAccessToken();
 
 		configureToken();
