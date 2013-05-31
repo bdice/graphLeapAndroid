@@ -14,7 +14,7 @@ public class TwitterSession {
 	private static final String TWEET_AUTH_KEY = "authKey";
 	private static final String TWEET_AUTH_SECRET_KEY = "authSecretKey";
 	private static final String TWEET_USERNAME = "username";
-	private static final String SHARED = "Twitter_Preferences";
+	private static final String SHARED = "graphLeapPrefs";
 
 	public TwitterSession(Context context) {
 		sharedPref = context.getSharedPreferences(SHARED, Context.MODE_PRIVATE);

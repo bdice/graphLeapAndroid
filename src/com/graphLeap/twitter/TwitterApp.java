@@ -14,6 +14,7 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.User;
 import twitter4j.auth.AccessToken;
+import twitter4j.conf.ConfigurationBuilder;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Handler;
@@ -35,24 +36,25 @@ public class TwitterApp {
 	public static final String OAUTH_CALLBACK_SCHEME = "twitterapp";
 	public static final String OAUTH_CALLBACK_HOST = "callback";
 	public static final String CALLBACK_URL = OAUTH_CALLBACK_SCHEME + "://" + OAUTH_CALLBACK_HOST;
-	
-	static String base_link_url = "http://www.google.com/";
+
 	private static final String TWITTER_ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token";
 	private static final String TWITTER_AUTHORZE_URL = "https://api.twitter.com/oauth/authorize";
 	private static final String TWITTER_REQUEST_URL = "https://api.twitter.com/oauth/request_token";
-	public static final String MESSAGE = "<strong>Way to go!</strong>";
 
 	public TwitterApp(Activity context, String consumerKey, String secretKey) {
 		this.context = context;
-
-		twitterAPI = new TwitterFactory().getInstance();
+		mConsumerKey = consumerKey;
+		mSecretKey = secretKey;
+		
+		ConfigurationBuilder configBuilder = new ConfigurationBuilder();
+		configBuilder.setOAuthConsumerKey(mConsumerKey).setOAuthConsumerSecret(mSecretKey).setUseSSL(true);
+		twitterAPI = new TwitterFactory(configBuilder.build()).getInstance();
 		mSession = new TwitterSession(context);
 		mProgressDlg = new ProgressDialog(context);
 
 		mProgressDlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		mConsumerKey = consumerKey;
-		mSecretKey = secretKey;
+		
 
 		mHttpOauthConsumer = new CommonsHttpOAuthConsumer(mConsumerKey, mSecretKey);
 
@@ -72,7 +74,6 @@ public class TwitterApp {
 
 	private void configureToken() {
 		if (mAccessToken != null) {
-			twitterAPI.setOAuthConsumer(mConsumerKey, mSecretKey);
 			twitterAPI.setOAuthAccessToken(mAccessToken);
 		}
 	}
